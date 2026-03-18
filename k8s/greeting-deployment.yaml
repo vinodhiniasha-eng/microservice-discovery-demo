@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greeting-service
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: greeting-service
+  template:
+    metadata:
+      labels:
+        app: greeting-service
+    spec:
+      containers:
+        - name: greeting-service
+          image: asha307/greeting-service:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: greeting-service
+  namespace: default
+spec:
+  selector:
+    app: greeting-service
+  ports:
+    - port: 80
+      targetPort: 8080

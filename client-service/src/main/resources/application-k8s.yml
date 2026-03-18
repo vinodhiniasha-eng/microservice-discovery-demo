@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: client-service
+
+greeting:
+  service:
+    url: http://greeting-service
+
+eureka:
+  client:
+    enabled: false
+    register-with-eureka: false
+    fetch-registry: false
+
+spring.cloud.loadbalancer.enabled: false
